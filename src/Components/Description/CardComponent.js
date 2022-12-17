@@ -93,7 +93,7 @@ export default function CardComponent({setShowSelectedMenuItems}){
 
 </div>
 <div class="row" style={{display:"flex",justifyContent:"flex-start"}}>
-<b style={{display:"flex",justifyContent:"flex-start"}}>{item.price}</b>
+<b style={{display:"flex",justifyContent:"flex-start",color:"#872f19"}}>${item.price}</b>
 </div>
 
 

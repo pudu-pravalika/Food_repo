@@ -3,10 +3,12 @@ import { Navbar } from 'react-bootstrap';
 import {Container} from 'react-bootstrap';
 import "../../styles/headerComponentStyles.css";
 import {BsFillCartFill} from "react-icons/bs";
+import ModalComponent from '../Bill/ModalComponent';
 import CardComponent from '../Description/CardComponent';
 export default function Header(){
   const [showSelecteditems,setShowSelectedItems] = useState([]);
   const [cartCount,setCartCount] = useState(0);
+  const [showModal,setShowModal] = useState(false);
   const setShowSelectedMenuItems = (items)=>{
       setShowSelectedItems(items);
   }
@@ -20,11 +22,12 @@ export default function Header(){
     return(
     
     <>
+    
       <Navbar bg="dark" className="header">
          <Container>
           <Navbar.Brand href="#home">
             <h2 style={{color:"white"}}><b>React Meals</b>
-            <button style={{marginLeft:"45rem",borderRadius:"2rem",width:"10rem"}}><BsFillCartFill/> Cart {quantity > 0 ? quantity : ''}</button></h2>
+            <button style={{marginLeft:"45rem",borderRadius:"2rem",width:"10rem"}} onClick={()=>setShowModal(true)}><BsFillCartFill/> Cart {quantity > 0 ? quantity : ''}</button></h2>
            
           
           </Navbar.Brand>
@@ -37,7 +40,7 @@ export default function Header(){
             </div>
             <CardComponent setShowSelectedMenuItems={setShowSelectedMenuItems}/>
             
-     
+            {showModal && <ModalComponent selectedItems={showSelecteditems} showModalComponent={showModal} total={total} />}
     </>
   );
     
